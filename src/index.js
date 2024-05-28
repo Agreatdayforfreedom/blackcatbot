@@ -1,0 +1,6 @@
+const {Client, GatewayIntentBits} = require("discord.js");
+
+const dotenv = require('dotenv');                                                                                       dotenv.config();                                                                                                                                                                                                                                const token = process.env.BOT_TOKEN;                                                                                                                                                                                                            const client = new Client({ intents: [GatewayIntentBits.Guilds] });                                                                                                                                                                             client.on("ready", cli => {
+    console.log(cli.user.displayName + "is online!");
+    client.user.setPresence({ activities: [{ type: 3, name: `Fuck leftist`}]})
+});                                                                                                                                                                                                                                             client.login(token);   
