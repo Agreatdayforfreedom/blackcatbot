@@ -1,18 +1,19 @@
-const { Client, GatewayIntentBits, Collection } = require("discord.js");
-const fs = require("fs");
-const ready = require("./events/ready");
-const messageCreate = require("./events/messageCreate");
-const interactionHandler = require("./interactionCreate");
+import Discord, { GatewayIntentBits } from "discord.js";
+import { Client } from "./utils/client";
+import fs from "fs";
+import ready from "./events/ready";
+import messageCreate from "./events/messageCreate";
+import interactionHandler from "./interactionCreate";
+import handleCommands from "./handleCommands";
 
 // const commandFolders = fs.readdir("./commands");
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
 dotenv.config();
 
 const token = process.env.BOT_TOKEN;
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
-require("./handleCommands")(client);
 
-client.commands = new Collection();
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+
 if (ready.once) {
   client.once(ready.name, (cli) => {
     ready.execute(cli);
@@ -20,12 +21,9 @@ if (ready.once) {
 }
 
 client.on(messageCreate.name, (message) => {
-  if (message.author.bot) return;
-  if (message.content === "HAH") {
-    return message.channel.send("HAH");
-  }
   messageCreate.execute(message);
 });
+handleCommands(client);
 //commandFolders, "./commands"
 client.handleCommands();
 client.on("interactionCreate", async (interaction) => {

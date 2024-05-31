@@ -1,11 +1,13 @@
-module.exports = {
+import { Message } from "discord.js";
+import bangCommands from "./bangCommands";
+export default {
   name: "messageCreate",
-  async execute(message) {
+  async execute(message: any) {
     const prefix = "!";
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
-    require("./bangCommands")(message, command, args);
+    bangCommands(message, command, args);
   },
 };

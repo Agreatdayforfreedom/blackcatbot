@@ -1,8 +1,8 @@
-const { SlashCommandBuilder } = require("discord.js");
+import { SlashCommandBuilder } from "discord.js";
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder().setName("smile").setDescription("Replies with a joke!"),
-  async execute(interaction) {
+  async execute(interaction: any) {
     await interaction.reply(
       `Why was Donkey Kong banned from the Super Smash Bros. competition?\nBecause he kept "monkeying" around with the controllers!`
     );

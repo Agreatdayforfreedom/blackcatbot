@@ -1,10 +1,13 @@
-const { REST, Routes } = require("discord.js");
-const fs = require("fs");
+import { Client } from "./utils/client";
 
-const guildId = "1239587224601890858";
-const clientId = "1245118921644834917";
+import { REST, Routes } from "discord.js";
+// const fs = require("fs");
+import command from "./commands/smile";
 
-module.exports = (client) => {
+const guildId = "";
+const clientId = "";
+
+export default (client: Client) => {
   client.handleCommands = async () => {
     client.commandArray = [];
     // for (folder of commandFolders) {
@@ -16,9 +19,8 @@ module.exports = (client) => {
     //   }
     // }
 
-    const rest = new REST({ version: "10" }).setToken(process.env.BOT_TOKEN);
-    const command = require(`./commands/smile.js`);
-    client.commands.set(command.data.name, command);
+    const rest = new REST({ version: "10" }).setToken(process.env.BOT_TOKEN!);
+    client.commands.set(command.data.name, command as any);
     client.commandArray.push(command.data.toJSON());
 
     (async () => {

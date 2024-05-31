@@ -1,4 +1,4 @@
-module.exports = (message, command, args) => {
+export default (message: any, command: any, args: any) => {
   if (command === "ping") message.reply("maslaton");
   if (command === "cat") message.reply("Meoow");
   if (command === "server") {
