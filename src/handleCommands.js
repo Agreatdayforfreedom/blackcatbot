@@ -1,9 +1,8 @@
 const { REST, Routes } = require("discord.js");
 const fs = require("fs");
 
-const guildId = "";
-const clientId = "";
-//todo
+const guildId = "1239587224601890858";
+const clientId = "1245118921644834917";
 
 module.exports = (client) => {
   client.handleCommands = async () => {

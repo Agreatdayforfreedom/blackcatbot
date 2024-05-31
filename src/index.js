@@ -20,6 +20,10 @@ if (ready.once) {
 }
 
 client.on(messageCreate.name, (message) => {
+  if (message.author.bot) return;
+  if (message.content === "HAH") {
+    return message.channel.send("HAH");
+  }
   messageCreate.execute(message);
 });
 //commandFolders, "./commands"
