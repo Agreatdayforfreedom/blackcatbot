@@ -1,8 +1,8 @@
 import Discord from "discord.js";
-import { ClientExtended } from "../types";
+import { ClientExtended, CommandFile } from "../types";
 
 export class Client extends Discord.Client implements ClientExtended {
-  public commands: Discord.Collection<string, Discord.CollectedInteraction<Discord.CacheType>>;
+  public commands: Discord.Collection<string, CommandFile>;
   public commandArray: any[];
   constructor(opts: Discord.ClientOptions) {
     super({ ...opts });

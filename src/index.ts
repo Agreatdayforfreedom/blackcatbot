@@ -26,7 +26,7 @@ client.on(messageCreate.name, (message) => {
 handleCommands(client);
 //commandFolders, "./commands"
 client.handleCommands();
-client.on("interactionCreate", async (interaction) => {
+client.on("interactionCreate", async (interaction: Discord.Interaction) => {
   interactionHandler.execute(interaction, client);
 });
 

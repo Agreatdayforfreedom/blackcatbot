@@ -4,8 +4,8 @@ import { REST, Routes } from "discord.js";
 // const fs = require("fs");
 import command from "./commands/smile";
 
-const guildId = "";
-const clientId = "";
+const guildId = "1239587224601890858";
+const clientId = "1245118921644834917";
 
 export default (client: Client) => {
   client.handleCommands = async () => {
@@ -20,7 +20,7 @@ export default (client: Client) => {
     // }
 
     const rest = new REST({ version: "10" }).setToken(process.env.BOT_TOKEN!);
-    client.commands.set(command.data.name, command as any);
+    client.commands.set(command.data.name, command);
     client.commandArray.push(command.data.toJSON());
 
     (async () => {
