@@ -1,4 +1,6 @@
-export default (message: any, command: any, args: any) => {
+import llm from "../utils/model";
+
+export default async (message: any, command: any, args: any) => {
   if (command === "ping") message.reply("maslaton");
   if (command === "cat") message.reply("Meoow");
   if (command === "server") {
@@ -26,5 +28,16 @@ export default (message: any, command: any, args: any) => {
     } else {
       message.reply("Do you know how to sum 2 numbers? Are you stupid or something?");
     }
+  }
+  if (command === "poem") {
+    if (args.length < 1) return message.reply("About?");
+
+    let string = args.join(" ");
+
+    let prompt = "Escribe un poema sobre " + string;
+
+    let output = await llm(prompt);
+
+    return message.reply(output);
   }
 };

@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@langchain/core": "^0.2.5",
+    "@langchain/google-genai": "^0.0.16",
     "discord.js": "^14.15.2",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "langchain": "^0.2.4"
   },
   "devDependencies": {
     "@types/node": "^20.13.0",
