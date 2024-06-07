@@ -1,6 +1,6 @@
 import llm from "../utils/model";
 
-export default async (message: any, command: any, args: any) => {
+export default (message: any, command: any, args: any) => {
   if (command === "ping") message.reply("maslaton");
   if (command === "cat") message.reply("Meoow");
   if (command === "server") {
@@ -36,8 +36,11 @@ export default async (message: any, command: any, args: any) => {
 
     let prompt = "Escribe un poema sobre " + string;
 
-    let output = await llm(prompt);
+    (async () => {
+      let output = await llm(prompt);
 
-    return message.reply(output);
+      return message.reply(output);
+    })();
+    return;
   }
 };

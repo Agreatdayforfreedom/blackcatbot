@@ -6,7 +6,6 @@ import messageCreate from "./events/messageCreate";
 import interactionHandler from "./interactionCreate";
 import handleCommands from "./handleCommands";
 
-// const commandFolders = fs.readdir("./commands");
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -24,7 +23,7 @@ client.on(messageCreate.name, (message) => {
   messageCreate.execute(message);
 });
 handleCommands(client);
-//commandFolders, "./commands"
+
 client.handleCommands();
 client.on("interactionCreate", async (interaction: Discord.Interaction) => {
   interactionHandler.execute(interaction, client);
